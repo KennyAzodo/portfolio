@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Eziwho Emenike Azunwo — The Academic Rabbi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f4f0;
+      --accent: #c8b89a;
+      --mid: #888;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    .site-wrapper { display: flex; min-height: 100vh; }
+
+    /* ── LEFT PANEL (desktop) ── */
+    .left-panel {
+      position: fixed;
+      top: 0; left: 0;
+      width: 42%;
+      height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(200,184,154,0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Portrait: fills entire panel as background */
+    .portrait-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .portrait-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0.32;
+      filter: grayscale(100%) contrast(1.15);
+      transition: opacity 0.6s;
+      display: block;
+    }
+
+    .left-panel:hover .portrait-wrap img { opacity: 0.44; }
+
+    .left-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .brand { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .brand-name {
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .brand-title {
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+      animation: fadeUp 0.8s 0.12s ease both;
+    }
+
+    .brand-aka {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #999;
+      margin-top: 0.15rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .left-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .tagline {
+      font-family: var(--serif);
+      font-size: clamp(0.95rem, 1.7vw, 1.2rem);
+      color: var(--white);
+      font-style: italic;
+      line-height: 1.55;
+      max-width: 300px;
+    }
+
+    .nav-links { display: flex; flex-direction: column; gap: 0.55rem; list-style: none; }
+
+    .nav-links li a {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .nav-links li a::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 0.8rem; height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links li a:hover { color: var(--white); }
+    .nav-links li a:hover::before { width: 1.2rem; }
+
+    .socials {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .socials a {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover { color: var(--accent); }
+
+    /* ── RIGHT PANEL ── */
+    .right-panel { margin-left: 42%; width: 58%; min-height: 100vh; background: var(--white); }
+
+    /* ── HERO ── */
+    .section-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 4rem 4rem 3.5rem;
+      position: relative;
+      border-bottom: 1px solid #e0ddd7;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.63rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.9s 0.5s ease both;
+    }
+
+    .hero-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      max-width: 540px;
+      animation: fadeUp 0.9s 0.6s ease both;
+    }
+
+    .hero-heading em { font-style: italic; font-weight: 400; }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #555;
+      max-width: 420px;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      animation: fadeUp 0.9s 0.75s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      animation: fadeUp 0.9s 0.82s ease both;
+      flex-wrap: wrap;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 0.15rem; }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s 0.9s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    .btn-primary { background: var(--black); color: var(--white); }
+    .btn-primary:hover { background: var(--accent); color: var(--black); }
+    .btn-outline { background: transparent; color: var(--black); border: 1px solid #ccc; }
+    .btn-outline:hover { border-color: var(--black); background: var(--black); color: var(--white); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; right: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid);
+      animation: fadeUp 1s 1.1s ease both;
+    }
+
+    .scroll-line {
+      width: 2.5rem; height: 1px;
+      background: var(--accent);
+      animation: growLine 1.2s 1.3s ease both;
+    }
+
+    @keyframes growLine { from { width: 0; } to { width: 2.5rem; } }
+
+    /* ── SHARED SECTION STYLES ── */
+    .section-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after { content: ''; flex: 1; height: 1px; background: #e0ddd7; }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      max-width: 420px;
+    }
+
+    .section-title em { font-style: italic; font-weight: 400; }
+
+    /* ── ABOUT ── */
+    .section-about { padding: 5rem 3.5rem; border-bottom: 1px solid #e0ddd7; }
+
+    .about-body { font-size: 0.93rem; font-weight: 300; color: #444; line-height: 1.9; max-width: 560px; }
+    .about-body p + p { margin-top: 1.2rem; }
+    .about-body strong { font-weight: 500; color: var(--black); }
+
+    .about-award {
+      margin-top: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--accent);
+      background: rgba(200,184,154,0.07);
+    }
+
+    .award-icon { font-size: 1.5rem; }
+    .award-text { display: flex; flex-direction: column; gap: 0.15rem; }
+    .award-name { font-family: var(--serif); font-size: 0.9rem; font-weight: 700; }
+    .award-body { font-size: 0.68rem; color: var(--mid); letter-spacing: 0.05em; }
+
+    /* ── EXPERTISE ── */
+    .section-expertise { padding: 5rem 3.5rem; border-bottom: 1px solid #e0ddd7; }
+
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+    .service-item {
+      padding: 2rem 2rem 2rem 0;
+      border-bottom: 1px solid #e0ddd7;
+      border-right: 1px solid #e0ddd7;
+    }
+
+    .service-item:nth-child(even) { padding-left: 2rem; padding-right: 0; border-right: none; }
+    .service-item:nth-last-child(-n+2) { border-bottom: none; }
+
+    .service-num { font-size: 0.63rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+    .service-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .service-desc { font-size: 0.82rem; font-weight: 300; color: #666; line-height: 1.65; }
+
+    /* ── WORKS ── */
+    .section-work { padding: 5rem 3.5rem; border-bottom: 1px solid #e0ddd7; }
+
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+
+    .work-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #1a1a1a;
+      cursor: pointer;
+    }
+
+    .work-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(80%);
+      transition: filter 0.5s, transform 0.6s;
+      display: block;
+    }
+
+    .work-item:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+
+    .work-item:hover .work-overlay { opacity: 1; }
+    .work-info { color: var(--white); }
+    .work-cat { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+    .work-title { font-family: var(--serif); font-size: 1rem; font-weight: 700; }
+    .work-item.large { grid-column: span 2; aspect-ratio: 16/7; }
+
+    /* ── ACCOLADES ── */
+    .section-accolades {
+      padding: 5rem 3.5rem;
+      background: var(--black);
+      color: var(--white);
+      border-bottom: 1px solid #222;
+    }
+
+    .section-accolades .section-label { color: var(--accent); }
+    .section-accolades .section-label::after { background: #333; }
+    .section-accolades .section-title { color: var(--white); }
+
+    .testimonials-list { display: flex; flex-direction: column; }
+
+    .testimonial-item {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #222;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .testimonial-item:last-child { border-bottom: none; }
+
+    .t-name { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--white); }
+    .t-role { font-size: 0.68rem; color: var(--mid); letter-spacing: 0.05em; }
+    .t-quote { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: #ccc; line-height: 1.65; }
+    .t-quote::before { content: '\201C'; color: var(--accent); margin-right: 0.1em; }
+    .t-quote::after  { content: '\201D'; color: var(--accent); margin-left: 0.1em; }
+
+    /* ── CONTACT ── */
+    .section-contact { padding: 5rem 3.5rem; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1rem; }
+
+    .contact-intro { font-size: 0.9rem; font-weight: 300; color: #555; line-height: 1.8; }
+
+    .contact-details { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
+
+    .contact-line { display: flex; flex-direction: column; gap: 0.1rem; }
+    .contact-line-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
+    .contact-line-value { font-size: 0.85rem; color: var(--black); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+
+    .form-input, .form-textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 0.6rem 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+
+    .form-input:focus, .form-textarea:focus { border-bottom-color: var(--black); }
+    .form-textarea { resize: none; height: 80px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: var(--mid);
+      padding: 2rem 3.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════════════════
+       MOBILE OVERRIDES
+       ════════════════════════════════ */
+    @media (max-width: 900px) {
+
+      /* Stack panels vertically */
+      .site-wrapper { flex-direction: column; }
+
+      /* Left panel: no longer fixed, becomes a compact header banner */
+      .left-panel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        min-height: unset;
+      }
+
+      /* Portrait: fixed height banner, not full-bleed tall */
+      .portrait-wrap {
+        position: relative;
+        width: 100%;
+        height: 260px;        /* controlled height — no more giant stretch */
+        overflow: hidden;
+      }
+
+      .portrait-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        opacity: 0.45;        /* slightly more visible on mobile */
+      }
+
+      /* Text content overlaid on the portrait banner */
+      .left-content {
+        position: absolute;
+        inset: 0;
+        padding: 1.8rem 1.5rem;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .brand-name { font-size: 1.35rem; }
+      .brand-title { font-size: 0.6rem; letter-spacing: 0.12em; }
+      .brand-aka { font-size: 0.75rem; }
+
+      /* Hide nav and tagline inside left panel on mobile — they'd overlap */
+      .left-middle { display: none; }
+
+      /* Show socials at the bottom of the banner */
+      .socials { gap: 0.8rem; }
+      .socials a { font-size: 0.6rem; }
+
+      /* Right panel takes full width */
+      .right-panel { margin-left: 0; width: 100%; }
+
+      /* Section padding */
+      .section-hero,
+      .section-about,
+      .section-expertise,
+      .section-work,
+      .section-accolades,
+      .section-contact { padding: 2.5rem 1.5rem; }
+
+      /* Hero */
+      .section-hero { min-height: unset; padding-top: 3rem; padding-bottom: 3rem; }
+      .hero-scroll { display: none; }
+
+      /* Work grid: single column */
+      .work-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .work-item.large { grid-column: span 1; aspect-ratio: 16/9; }
+      .work-item { aspect-ratio: 16/9; }
+      /* Always show overlay on touch */
+      .work-overlay { opacity: 1; }
+
+      /* Expertise: single column */
+      .services-grid { grid-template-columns: 1fr; }
+      .service-item {
+        border-right: none !important;
+        border-bottom: 1px solid #e0ddd7 !important;
+        padding: 1.5rem 0 !important;
+      }
+      .service-item:last-child { border-bottom: none !important; }
+
+      /* Accolades */
+      .testimonial-item { grid-template-columns: 1fr; gap: 0.6rem; }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+        padding: 1.5rem;
+      }
+    }
+
+    /* Very small screens */
+    @media (max-width: 480px) {
+      .portrait-wrap { height: 200px; }
+      .hero-heading { font-size: 2rem; }
+      .hero-stats { gap: 1.2rem; }
+      .stat-num { font-size: 1.5rem; }
+      .section-title { font-size: 1.6rem; }
+      .hero-cta { flex-direction: column; }
+      .btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="site-wrapper">
+
+  <!-- LEFT PANEL -->
+  <aside class="left-panel">
+    <div class="portrait-wrap">
+      <!-- Replace "a" with your image path, e.g. src="azunwo.jpg" -->
+      <img src="a9f4b456-92dd-4a07-bad2-e54c95b8fe58.jpeg" alt="Dr. Eziwho Emenike Azunwo"/>
+    </div>
+    <div class="left-content">
+      <div class="brand">
+        <div class="brand-name">Dr. Eziwho<br>Emenike Azunwo</div>
+        <div class="brand-title">Assoc. Prof · Rivers State University</div>
+        <div class="brand-aka">"The Academic Rabbi"</div>
+      </div>
+      <div class="left-middle">
+        <p class="tagline">Playwright. Critic. Theorist. A luminary shaping the soul of Nigerian theatre.</p>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#works">Published Works</a></li>
+          <li><a href="#accolades">Accolades</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="socials">
+        <a href="#">Academia.edu</a>
+        <a href="#">ResearchGate</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT PANEL -->
+  <main class="right-panel">
+
+    <!-- HERO -->
+    <section class="section-hero" id="hero">
+      <p class="hero-eyebrow">Nigerian Playwright · Literary Critic · Academic · 2025</p>
+      <h1 class="hero-heading">Words that <em>outlive</em> the stage.</h1>
+      <p class="hero-sub">Associate Professor of Literary Criticism and Playwriting at Rivers State University, Nigeria — one of the most prolific theatre voices of his generation.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">131+</span>
+          <span class="stat-label">Plays Published</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">60+</span>
+          <span class="stat-label">Journal Articles</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2025</span>
+          <span class="stat-label">SONTA Lifetime Award</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#works" class="btn btn-primary">Explore His Works</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        Scroll
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section-about" id="about">
+      <div class="section-label reveal">The Man Behind the Legend</div>
+      <h2 class="section-title reveal">Scholar, Artist &amp; <em>Visionary.</em></h2>
+      <div class="about-body reveal">
+        <p>Dr. Eziwho Emenike Azunwo — affectionately known as the <strong>Academic Rabbi</strong> — is a luminary in the realm of academia and a beacon of scholarly excellence. Hailing from the picturesque town of Rundele in Emohua LGA of Rivers State, Nigeria, his journey in academia has been nothing short of extraordinary.</p>
+        <p>As Associate Professor of Literary Criticism and Playwriting and the immediate past Acting Head of the Department of Theatre and Film Studies at Rivers State University, Dr. Azunwo embodies a profound commitment to education and intellectual inquiry. From his tenure as a lecturer at the University of Port Harcourt to his current role, he has been a catalyst for positive change — shaping the minds of countless students and inspiring the next generation of scholars.</p>
+        <p>A true Renaissance man, his contributions extend far beyond the classroom. He is a renowned Nigerian playwright, a revered critic, a visionary theorist, and a dedicated advocate for social change — using his platform to shed light on pressing issues such as women empowerment and domestic violence in Nigerian video films.</p>
+        <p>Beyond his professional achievements, Dr. Azunwo finds strength in family. Married to Dr. (Mrs.) Precious Uchechi Azunwo — herself a lecturer at the University of Port Harcourt — their union is blessed with a son and a daughter.</p>
+      </div>
+      <div class="about-award reveal">
+        <span class="award-icon">🏆</span>
+        <div class="award-text">
+          <span class="award-name">SONTA Lifetime Achievement Award — 2025</span>
+          <span class="award-body">Society of Nigeria Theatre Artists · Highest Honour in Nigerian Theatre</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="section-expertise" id="expertise">
+      <div class="section-label reveal">Areas of Expertise</div>
+      <h2 class="section-title reveal">Scholarship built across disciplines.</h2>
+      <div class="services-grid">
+        <div class="service-item reveal">
+          <div class="service-num">01</div>
+          <div class="service-name">Literary Criticism</div>
+          <p class="service-desc">Deep analytical engagement with African literature, theatre theory, and dramatic texts across generations.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">02</div>
+          <div class="service-name">Playwriting</div>
+          <p class="service-desc">Author of over 131 published plays — from the gripping "The Last Don" to the celebrated "Suffering in Paradise."</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">03</div>
+          <div class="service-name">Theatre &amp; Film Studies</div>
+          <p class="service-desc">Former Acting Head of Department at RSU, with decades of research on Nigerian video films and performance culture.</p>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-num">04</div>
+          <div class="service-name">Social Advocacy</div>
+          <p class="service-desc">Pioneering work on women empowerment and domestic violence narratives within African cinematic storytelling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section class="section-work" id="works">
+      <div class="section-label reveal">Selected Works</div>
+      <h2 class="section-title reveal">A legacy written in ink and light.</h2>
+      <div class="work-grid">
+        <div class="work-item large reveal">
+          <img src="2eee1726-9642-43f4-acb0-0e3be5734f5e.jpeg" alt="Suffering in Paradise"/>
+          <div class="work-overlay">
+            <div class="work-info">
+              <div class="work-cat">Published Play · Flagship Work</div>
+              <div class="work-title">Duly Sold</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-item reveal">
+          <img src="5c610546-23f4-45be-9f49-d20f195d77ce.jpeg" alt="The Last Don"/>
+          <div class="work-overlay">
+            <div class="work-info">
+              <div class="work-cat">Published Play</div>
+              <div class="work-title">Un-Destined Fate</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-item reveal">
+          <img src="7c822283-dd60-4ebc-bd69-4c93c0329dd9.jpeg" alt="The Good Man"/>
+          <div class="work-overlay">
+            <div class="work-info">
+              <div class="work-cat">Published Play </div>
+              <div class="work-title">The Merchants</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-item reveal">
+          <img src="8a2d39ba-24bf-40b2-a081-908fbf5618c9.jpeg" alt="Journal Articles"/>
+          <div class="work-overlay">
+            <div class="work-info">
+              <div class="work-cat">Published Play</div>
+              <div class="work-title">A God with the crown</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-item reveal">
+          <img src="15505f1e-4f1b-4bec-8cc4-98c1dec760d5.jpeg" alt="Theatre Research"/>
+          <div class="work-overlay">
+            <div class="work-info">
+              <div class="work-cat">Published Play</div>
+              <div class="work-title">The man's wit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCOLADES -->
+    <section class="section-accolades" id="accolades">
+      <div class="section-label reveal">Recognition &amp; Impact</div>
+      <h2 class="section-title reveal">A career that speaks for itself.</h2>
+      <div class="testimonials-list">
+        <div class="testimonial-item reveal">
+          <div>
+            <div class="t-name">SONTA Lifetime Achievement Award</div>
+            <div class="t-role">Society of Nigeria Theatre Artists · 2025</div>
+          </div>
+          <p class="t-quote">Honoured for decades of unparalleled contribution to Nigerian theatre, playwriting, and the advancement of dramatic arts in Africa.</p>
+        </div>
+        <div class="testimonial-item reveal">
+          <div>
+            <div class="t-name">Standing Ovation in the USA</div>
+            <div class="t-role">International Reception · "The Good Man"</div>
+          </div>
+          <p class="t-quote">His unpublished play received a standing ovation on American soil — a testament to his ability to captivate audiences on a truly global scale.</p>
+        </div>
+        <div class="testimonial-item reveal">
+          <div>
+            <div class="t-name">131+ Published Plays</div>
+            <div class="t-role">A Record of Creative Prolificacy</div>
+          </div>
+          <p class="t-quote">One of the most prolific playwrights in Nigerian academia — a creative oeuvre of extraordinary breadth, depth, and artistic courage.</p>
+        </div>
+        <div class="testimonial-item reveal">
+          <div>
+            <div class="t-name">60+ Journal Articles</div>
+            <div class="t-role">National &amp; International Scholarly Journals</div>
+          </div>
+          <p class="t-quote">A scholar whose pen never rests — advancing discourse in literary criticism, theatre theory, and African feminist film studies.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-contact" id="contact">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="section-title reveal">Reach out for collaboration or inquiry.</h2>
+      <div class="contact-grid">
+        <div>
+          <p class="contact-intro reveal">Whether you are a researcher, publisher, theatre practitioner, or institution seeking collaboration — Dr. Azunwo welcomes meaningful conversations about theatre, literature, and the arts.</p>
+          <div class="contact-details reveal">
+            <div class="contact-line">
+              <span class="contact-line-label">Institution</span>
+              <span class="contact-line-value">Rivers State University, Nigeria</span>
+            </div>
+            <div class="contact-line">
+              <span class="contact-line-label">Department</span>
+              <span class="contact-line-value">Theatre &amp; Film Studies</span>
+            </div>
+            <div class="contact-line">
+              <span class="contact-line-label">Location</span>
+              <span class="contact-line-value">Port Harcourt, Rivers State, Nigeria</span>
+            </div>
+            <div class="contact-line">
+              <span class="contact-line-label">Hometown</span>
+              <span class="contact-line-value">Rundele, Emohua LGA, Rivers State</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Your full name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="e.g. Research Collaboration, Speaking Engagement"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Share the purpose of your inquiry…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>© 2025 Dr. Eziwho Emenike Azunwo. All rights reserved.</span>
+      <span>The Academic Rabbi · Port Harcourt, Nigeria</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? '#f5f4f0' : '';
+    });
+  }, { passive: true });
+
+  // Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#c8b89a';
+    btn.style.color = '#0a0a0a';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
