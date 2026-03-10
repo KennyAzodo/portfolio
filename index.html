@@ -492,10 +492,8 @@
        ════════════════════════════════ */
     @media (max-width: 900px) {
 
-      /* Stack panels vertically */
       .site-wrapper { flex-direction: column; }
 
-      /* Left panel: no longer fixed, becomes a compact header banner */
       .left-panel {
         position: relative;
         width: 100%;
@@ -504,11 +502,10 @@
         min-height: unset;
       }
 
-      /* Portrait: fixed height banner, not full-bleed tall */
       .portrait-wrap {
         position: relative;
         width: 100%;
-        height: 260px;        /* controlled height — no more giant stretch */
+        height: 260px;
         overflow: hidden;
       }
 
@@ -517,10 +514,9 @@
         height: 100%;
         object-fit: cover;
         object-position: top center;
-        opacity: 0.45;        /* slightly more visible on mobile */
+        opacity: 0.45;
       }
 
-      /* Text content overlaid on the portrait banner */
       .left-content {
         position: absolute;
         inset: 0;
@@ -533,17 +529,13 @@
       .brand-title { font-size: 0.6rem; letter-spacing: 0.12em; }
       .brand-aka { font-size: 0.75rem; }
 
-      /* Hide nav and tagline inside left panel on mobile — they'd overlap */
       .left-middle { display: none; }
 
-      /* Show socials at the bottom of the banner */
       .socials { gap: 0.8rem; }
       .socials a { font-size: 0.6rem; }
 
-      /* Right panel takes full width */
       .right-panel { margin-left: 0; width: 100%; }
 
-      /* Section padding */
       .section-hero,
       .section-about,
       .section-expertise,
@@ -551,18 +543,14 @@
       .section-accolades,
       .section-contact { padding: 2.5rem 1.5rem; }
 
-      /* Hero */
       .section-hero { min-height: unset; padding-top: 3rem; padding-bottom: 3rem; }
       .hero-scroll { display: none; }
 
-      /* Work grid: single column */
       .work-grid { grid-template-columns: 1fr; gap: 1rem; }
       .work-item.large { grid-column: span 1; aspect-ratio: 16/9; }
       .work-item { aspect-ratio: 16/9; }
-      /* Always show overlay on touch */
       .work-overlay { opacity: 1; }
 
-      /* Expertise: single column */
       .services-grid { grid-template-columns: 1fr; }
       .service-item {
         border-right: none !important;
@@ -571,13 +559,10 @@
       }
       .service-item:last-child { border-bottom: none !important; }
 
-      /* Accolades */
       .testimonial-item { grid-template-columns: 1fr; gap: 0.6rem; }
 
-      /* Contact */
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
 
-      /* Footer */
       footer {
         flex-direction: column;
         gap: 0.4rem;
@@ -586,7 +571,6 @@
       }
     }
 
-    /* Very small screens */
     @media (max-width: 480px) {
       .portrait-wrap { height: 200px; }
       .hero-heading { font-size: 2rem; }
@@ -605,7 +589,6 @@
   <!-- LEFT PANEL -->
   <aside class="left-panel">
     <div class="portrait-wrap">
-      <!-- Replace "a" with your image path, e.g. src="azunwo.jpg" -->
       <img src="a9f4b456-92dd-4a07-bad2-e54c95b8fe58.jpeg" alt="Dr. Eziwho Emenike Azunwo"/>
     </div>
     <div class="left-content">
@@ -824,6 +807,10 @@
             <div class="contact-line">
               <span class="contact-line-label">Hometown</span>
               <span class="contact-line-value">Rundele, Emohua LGA, Rivers State</span>
+            </div>
+            <div class="contact-line">
+              <span class="contact-line-label">Phone</span>
+              <span class="contact-line-value"><a href="tel:+2348063733829" style="color: inherit; text-decoration: none;">+234 806 373 3829</a></span>
             </div>
           </div>
         </div>
