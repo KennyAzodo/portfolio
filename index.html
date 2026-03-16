@@ -162,6 +162,10 @@
     .footer-bottom-right { display: flex; gap: 1.5rem; }
     .footer-bottom-right a { color: #444; text-decoration: none; letter-spacing: 0.12em; font-size: 0.58rem; text-transform: uppercase; transition: color 0.25s; }
     .footer-bottom-right a:hover { color: var(--accent); }
+    /* Publication page intro note */
+    .pub-intro-note { background: rgba(200,184,154,0.08); border-left: 3px solid var(--accent); padding: 1.5rem 2rem; margin: 0 3rem 0; max-width: 680px; }
+    .pub-intro-note p { font-size: 0.92rem; font-weight: 300; color: #555; line-height: 1.85; }
+    .pub-intro-note strong { font-weight: 500; color: var(--black); }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -183,6 +187,7 @@
       .gallery-header { padding: 3rem 1.5rem 2rem; }
       .gallery-grid { padding: 1.5rem; grid-template-columns: 1fr 1fr; gap: 1rem; }
       .gallery-item.wide { grid-column: span 2; }
+      .pub-intro-note { margin: 0 1.5rem; }
       .contact-grid-wrap { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
       .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.5rem; }
       .footer-bottom { flex-direction: column; gap: 0.6rem; text-align: center; padding: 1.2rem 1.5rem; }
@@ -213,6 +218,7 @@
       <li><a href="#" data-page="about">About</a></li>
       <li><a href="#" data-page="awards">Awards</a></li>
       <li><a href="#" data-page="gallery">Gallery</a></li>
+      <li><a href="#" data-page="publication">Publication</a></li>
       <li><a href="#" data-page="contact">Contact</a></li>
     </ul>
   </nav>
@@ -228,6 +234,7 @@
   <a href="#" data-page="about">About</a>
   <a href="#" data-page="awards">Awards</a>
   <a href="#" data-page="gallery">Gallery</a>
+  <a href="#" data-page="publication">Publication</a>
   <a href="#" data-page="contact">Contact</a>
 </div>
 
@@ -306,30 +313,14 @@
         <div class="detail-block">
           <span class="detail-label">Research Focus</span>
           <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.3rem;">
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Literary Criticism
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>African Theatre Theory
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Dramatic Theory and Criticism
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Applied Theatre
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Performance Studies
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Feminism
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Gender Studies
-            </div>
-            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);">
-              <span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Playwriting
-            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Literary Criticism</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>African Theatre Theory</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Dramatic Theory and Criticism</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Applied Theatre</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Performance Studies</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Feminism</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Gender Studies</div>
+            <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:var(--black);"><span style="width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Playwriting</div>
           </div>
         </div>
       </div>
@@ -385,7 +376,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div><div class="footer-brand-name">Dr. Eziwho Emenike Azunwo</div><div class="footer-brand-aka">"The Academic Rabbi"</div><p class="footer-tagline">A luminary in Nigerian theatre — playwright, critic, theorist, and dedicated advocate for social change through the arts.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="publication">Publication</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
       <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="https://www.academia.edu/upgrade?feature=searchm&trigger=mentions_drip_dept_univ">Academia.edu</a></li><li><a href="https://www.researchgate.net/profile/Eziwho-Azunwo?ev=hdr_xprf">ResearchGate</a></li><li><a href="https://scholar.google.com/citations?user=tkdIJV8AAAAJ&hl=en">Google Scholar</a></li></ul></div>
       <div><div class="footer-col-title">Contact</div><div class="footer-contact-line"><span class="footer-contact-label">Institution</span><span class="footer-contact-value">Rivers State University</span></div><div class="footer-contact-line"><span class="footer-contact-label">Phone</span><span class="footer-contact-value"><a href="tel:+2348063733829" style="color:inherit;text-decoration:none;">+234 806 373 3829</a></span></div></div>
     </div>
@@ -393,15 +384,102 @@
   </footer>
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY — Academic Works only -->
 <div id="page-gallery" class="page">
   <div class="gallery-header">
-    <div class="section-label reveal">Published Works &amp; Visual Archive</div>
+    <div class="section-label reveal">Academic Visual Archive</div>
     <h2 class="section-title reveal">A legacy written in <em>ink and light.</em></h2>
-    <p style="font-size:0.88rem;font-weight:300;color:#666;max-width:480px;line-height:1.8;" class="reveal">A curated visual archive of Dr. Azunwo's most celebrated plays and publications. Hover to reveal details, click to enlarge.</p>
+    <p style="font-size:0.88rem;font-weight:300;color:#666;max-width:480px;line-height:1.8;" class="reveal">A curated visual archive of Dr. Azunwo's academic works and scholarly contributions. Hover to reveal details, click to enlarge.</p>
   </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic1.jpeg" alt="Academic Work 1"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work I</div></div></div>
+    </div>
+    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
+      <img src="academic2.jpeg" alt="Academic Work 2"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work II</div></div></div>
+    </div>
+    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
+      <img src="academic3.jpeg" alt="Academic Work 3"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work III</div></div></div>
+    </div>
+    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
+      <img src="academic4.jpeg" alt="Academic Work 4"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work IV</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic5.jpeg" alt="Academic Work 5"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work V</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic6.jpeg" alt="Academic Work 6"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work VI</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic7.jpeg" alt="Academic Work 7"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work VII</div></div></div>
+    </div>
+    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
+      <img src="academic8.jpeg" alt="Academic Work 8"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work VIII</div></div></div>
+    </div>
+    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
+      <img src="academic9.jpeg" alt="Academic Work 9"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work IX</div></div></div>
+    </div>
+    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
+      <img src="academic10.jpeg" alt="Academic Work 10"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work X</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic11.jpeg" alt="Academic Work 11"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work XI</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic12.jpeg" alt="Academic Work 12"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work XII</div></div></div>
+    </div>
+    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
+      <img src="academic13.jpeg" alt="Academic Work 13"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work XIII</div></div></div>
+    </div>
+    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
+      <img src="academic14.jpeg" alt="Academic Work 14"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work XIV</div></div></div>
+    </div>
+    <div class="gallery-item square reveal" onclick="openLightbox(this)">
+      <img src="academic15.jpeg" alt="Academic Work 15"/>
+      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Academic Work</div><div class="gallery-title">Academic Work XV</div></div></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><div class="footer-brand-name">Dr. Eziwho Emenike Azunwo</div><div class="footer-brand-aka">"The Academic Rabbi"</div><p class="footer-tagline">A luminary in Nigerian theatre — playwright, critic, theorist, and dedicated advocate for social change through the arts.</p></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="publication">Publication</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
+      <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="https://www.academia.edu/upgrade?feature=searchm&trigger=mentions_drip_dept_univ">Academia.edu</a></li><li><a href="https://www.researchgate.net/profile/Eziwho-Azunwo?ev=hdr_xprf">ResearchGate</a></li><li><a href="https://scholar.google.com/citations?user=tkdIJV8AAAAJ&hl=en">Google Scholar</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><div class="footer-contact-line"><span class="footer-contact-label">Institution</span><span class="footer-contact-value">Rivers State University</span></div><div class="footer-contact-line"><span class="footer-contact-label">Phone</span><span class="footer-contact-value"><a href="tel:+2348063733829" style="color:inherit;text-decoration:none;">+234 806 373 3829</a></span></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 Dr. Eziwho Emenike Azunwo. All rights reserved.</span><div class="footer-bottom-right"><a href="#">The Academic Rabbi</a><a href="#">Port Harcourt, Nigeria</a></div></div>
+  </footer>
+</div>
+
+<!-- PUBLICATION — All non-academic images -->
+<div id="page-publication" class="page">
+  <div class="gallery-header">
+    <div class="section-label reveal">Published Plays &amp; Creative Works</div>
+    <h2 class="section-title reveal">Stories forged from <em>truth and imagination.</em></h2>
+  </div>
+
+  <!-- Intro Note -->
+  <div class="pub-intro-note reveal" style="margin-top: 2.5rem; margin-bottom: 0.5rem;">
+    <p>Over the course of a prolific career spanning several decades, <strong>Dr. Eziwho Emenike Azunwo</strong> has authored more than 131 published plays — a body of creative work that stands as one of the most expansive in Nigerian literary history. Each title in this collection represents not merely a dramatic text, but a deliberate intervention in the social, cultural, and political conversations of our time. From intimate human tragedies to sweeping moral epics, his plays give voice to the silenced, challenge the powerful, and celebrate the resilience of the African spirit. These works are available for purchase on his <a href="https://selar.com/m/eziwho-emenike-azunwo1?fbclid=IwZXh0bgNhZW0CMTEAAR2IVEhc1TttBc-fIO7heQoE7-aUtN_Yubyjfdntf5CsRluSlyRVPvSPUdg_aem_rXnSi6N38161fotu28zSUA" target="_blank" rel="noopener" style="color:var(--black);font-weight:500;border-bottom:1px solid var(--accent);text-decoration:none;">Selar store</a>.</p>
+  </div>
+
   <!-- Selar Store Banner -->
-  <div style="background: var(--black); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid #1e1e1e;">
+  <div style="background: var(--black); padding: 2rem 3rem; margin-top: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-bottom: 1px solid #1e1e1e;">
     <div>
       <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">Available Now · Selar Store</div>
       <div style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--white);line-height:1.2;">Browse &amp; Purchase Dr. Azunwo's Published Plays</div>
@@ -413,7 +491,7 @@
   </div>
 
   <div class="gallery-grid">
-    <!-- Original images -->
+    <!-- Named flagship works -->
     <div class="gallery-item wide reveal" onclick="openLightbox(this)">
       <img src="2eee1726-9642-43f4-acb0-0e3be5734f5e.jpeg" alt="Duly Sold"/>
       <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play · Flagship Work</div><div class="gallery-title">Duly Sold</div></div></div>
@@ -438,7 +516,7 @@
       <img src="a9f4b456-92dd-4a07-bad2-e54c95b8fe58.jpeg" alt="Dr. Azunwo Portrait"/>
       <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Portrait</div><div class="gallery-title">Dr. Eziwho Emenike Azunwo</div></div></div>
     </div>
-    <!-- New images 1.jpeg - 17.jpeg -->
+    <!-- Works 1–17 -->
     <div class="gallery-item wide reveal" onclick="openLightbox(this)">
       <img src="1.jpeg" alt="Published Work 1"/>
       <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Work I</div></div></div>
@@ -507,73 +585,13 @@
       <img src="17.jpeg" alt="Published Work 17"/>
       <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Work XVII</div></div></div>
     </div>
-    <!-- Academic series: academic1.jpeg - academic15.jpeg -->
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic1.jpeg" alt="Academic Work 1"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work I</div></div></div>
-    </div>
-    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-      <img src="academic2.jpeg" alt="Academic Work 2"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work II</div></div></div>
-    </div>
-    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-      <img src="academic3.jpeg" alt="Academic Work 3"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work III</div></div></div>
-    </div>
-    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
-      <img src="academic4.jpeg" alt="Academic Work 4"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work IV</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic5.jpeg" alt="Academic Work 5"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work V</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic6.jpeg" alt="Academic Work 6"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work VI</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic7.jpeg" alt="Academic Work 7"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work VII</div></div></div>
-    </div>
-    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
-      <img src="academic8.jpeg" alt="Academic Work 8"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work VIII</div></div></div>
-    </div>
-    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-      <img src="academic9.jpeg" alt="Academic Work 9"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work IX</div></div></div>
-    </div>
-    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-      <img src="academic10.jpeg" alt="Academic Work 10"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work X</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic11.jpeg" alt="Academic Work 11"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work XI</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic12.jpeg" alt="Academic Work 12"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work XII</div></div></div>
-    </div>
-    <div class="gallery-item wide reveal" onclick="openLightbox(this)">
-      <img src="academic13.jpeg" alt="Academic Work 13"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work XIII</div></div></div>
-    </div>
-    <div class="gallery-item tall reveal" onclick="openLightbox(this)">
-      <img src="academic14.jpeg" alt="Academic Work 14"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work XIV</div></div></div>
-    </div>
-    <div class="gallery-item square reveal" onclick="openLightbox(this)">
-      <img src="academic15.jpeg" alt="Academic Work 15"/>
-      <div class="gallery-overlay"><div class="gallery-info"><div class="gallery-cat">Published Play</div><div class="gallery-title">Academic Work XV</div></div></div>
-    </div>
   </div>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div><div class="footer-brand-name">Dr. Eziwho Emenike Azunwo</div><div class="footer-brand-aka">"The Academic Rabbi"</div><p class="footer-tagline">A luminary in Nigerian theatre — playwright, critic, theorist, and dedicated advocate for social change through the arts.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
-      <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="#">Academia.edu</a></li><li><a href="#">ResearchGate</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="publication">Publication</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
+      <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="https://www.academia.edu/upgrade?feature=searchm&trigger=mentions_drip_dept_univ">Academia.edu</a></li><li><a href="https://www.researchgate.net/profile/Eziwho-Azunwo?ev=hdr_xprf">ResearchGate</a></li><li><a href="https://scholar.google.com/citations?user=tkdIJV8AAAAJ&hl=en">Google Scholar</a></li></ul></div>
       <div><div class="footer-col-title">Contact</div><div class="footer-contact-line"><span class="footer-contact-label">Institution</span><span class="footer-contact-value">Rivers State University</span></div><div class="footer-contact-line"><span class="footer-contact-label">Phone</span><span class="footer-contact-value"><a href="tel:+2348063733829" style="color:inherit;text-decoration:none;">+234 806 373 3829</a></span></div></div>
     </div>
     <div class="footer-bottom"><span>© 2025 Dr. Eziwho Emenike Azunwo. All rights reserved.</span><div class="footer-bottom-right"><a href="#">The Academic Rabbi</a><a href="#">Port Harcourt, Nigeria</a></div></div>
@@ -606,8 +624,8 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div><div class="footer-brand-name">Dr. Eziwho Emenike Azunwo</div><div class="footer-brand-aka">"The Academic Rabbi"</div><p class="footer-tagline">A luminary in Nigerian theatre — playwright, critic, theorist, and dedicated advocate for social change through the arts.</p></div>
-      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
-      <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="#">Academia.edu</a></li><li><a href="#">ResearchGate</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+      <div><div class="footer-col-title">Navigate</div><ul class="footer-links"><li><a href="#" data-page="home">Home</a></li><li><a href="#" data-page="about">About</a></li><li><a href="#" data-page="awards">Awards</a></li><li><a href="#" data-page="gallery">Gallery</a></li><li><a href="#" data-page="publication">Publication</a></li><li><a href="#" data-page="contact">Contact</a></li></ul></div>
+      <div><div class="footer-col-title">Online</div><ul class="footer-links"><li><a href="https://www.academia.edu/upgrade?feature=searchm&trigger=mentions_drip_dept_univ">Academia.edu</a></li><li><a href="https://www.researchgate.net/profile/Eziwho-Azunwo?ev=hdr_xprf">ResearchGate</a></li><li><a href="https://scholar.google.com/citations?user=tkdIJV8AAAAJ&hl=en">Google Scholar</a></li></ul></div>
       <div><div class="footer-col-title">Contact</div><div class="footer-contact-line"><span class="footer-contact-label">Institution</span><span class="footer-contact-value">Rivers State University</span></div><div class="footer-contact-line"><span class="footer-contact-label">Phone</span><span class="footer-contact-value"><a href="tel:+2348063733829" style="color:inherit;text-decoration:none;">+234 806 373 3829</a></span></div></div>
     </div>
     <div class="footer-bottom"><span>© 2025 Dr. Eziwho Emenike Azunwo. All rights reserved.</span><div class="footer-bottom-right"><a href="#">The Academic Rabbi</a><a href="#">Port Harcourt, Nigeria</a></div></div>
